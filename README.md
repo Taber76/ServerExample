@@ -1,5 +1,6 @@
 ![Badge en Desarollo](https://img.shields.io/badge/STATUS-DEVELOPING-yellow)
-# NODEJS + EXPRESS + TYPESCRIPT + PRISMA -- Example
+
+np# NODEJS + EXPRESS + TYPESCRIPT + PRISMA 
 ## CREATE
 - npm install --save-dev typescript @types/express @types/node ts-node-dev
 - npx tsc --init

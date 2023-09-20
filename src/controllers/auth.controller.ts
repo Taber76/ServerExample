@@ -2,14 +2,14 @@ import { Request, Response } from 'express-serve-static-core';
 import { Prisma } from '@prisma/client';
 
 import { prisma } from '../config/prisma.client.js';
-import { ExampleHelper } from '../helpers/example.helper.js';
+import AuthHelper from '../helpers/auth.helper.js';
 
-export namespace ExampleController {
+const AuthController = {
 
-  export async function get(req: Request, res: Response) {
+  getInfo: async (req: Request, res: Response): Promise<void> => {
     try {
-      if (ExampleHelper.checkInfo(req, res)) {
-        const example = await prisma.example.findMany();
+      if (AuthHelper.checkInfo(req, res)) {
+        const example = await prisma.users.findMany();
         if (example !== null && example.length > 0) {
           res
             .status(200)
@@ -30,6 +30,15 @@ export namespace ExampleController {
         .status(500)
         .json({ message: 'Internal server error' });
     }
+  },
+
+  anotherController: async (req: Request, res: Response): Promise<void> => {
+    res
+      .status(200)
+      .json({ message: 'Another info' });
   }
 
+
 }
+
+export default AuthController
